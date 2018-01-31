@@ -13,5 +13,5 @@ turtle.shape("hexagon")
 turtle.mainloop()
 
 
-turtle.register_shape("hexagon", turtle.begin_poly()
+#turtle.register_shape("hexagon", turtle.begin_poly()
 								
