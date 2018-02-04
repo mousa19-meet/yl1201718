@@ -7,9 +7,9 @@ colormode(255)
 hideturtle()
 tracer(0)
 
-number_of_BALLS = 5
-minimum_ball_radius = 10
-maximum_ball_radius = 70
+number_of_BALLS = 10
+minimum_ball_radius = 5
+maximum_ball_radius = 50
 minimum_ball_dx = -2
 maximum_ball_dx = 2
 minimum_ball_dy = -2
@@ -123,10 +123,12 @@ def check_myball_collision():
 					print('you win')
 					scoret.pu()
 					scoret.goto(0,250)
-					scoret.clear()
 					scoret.write("SCORE: " + str(score),align="center",font=("Arial", 20, "normal"))
 					scoret.goto(0,0)
-					scoret.write("YOU WIN!!!", align="center",font=("Arial", 100 ,"normal"))
+					scoret.color("orange")
+					scoret.write("YOU WIN!!", align="center",font=("Arial", 100 ,"normal"))
+					time.sleep(5)
+					turtle.bye()
 					
 				else:
 					score += 1
@@ -146,6 +148,7 @@ def check_myball_collision():
 					ball.color = color
 	return True
 
+
 def movearound(event):
 	x1 = event.x - screen_width
 	y1 = screen_height - event.y
@@ -153,18 +156,32 @@ def movearound(event):
 turtle.getcanvas().bind("<Motion>", movearound)
 turtle.listen()
 
+game_turtle = clone()
+start_game_turtle = turtle.clone()
+aix = 3
+for i in range (4):
+	game_turtle.goto(0,50)
+	game_turtle.write("GAME STARTS IN : ", align ="center" ,font = ("Arial" , 50 ,"normal"))
+	start_game_turtle.write(aix, align = "center" , font = ("Arial" , 50 , "normal"))
+	aix -= 1 
+	start_game_turtle.clear()
+	game_turtle.clear()
+	time.sleep(1)
+	
+
 while running == True:
 	if screen_width !=  int(turtle.getcanvas().winfo_width()/2) or screen_height != int(turtle.getcanvas().winfo_height()/2):
 		screen_width =int(turtle.getcanvas().winfo_width()/2)
 		screen_height = int(turtle.getcanvas().winfo_height()/2)
+
 	move_all_balls()
 	check_all_balls_collision()
+
 	if check_myball_collision() == False:
 		running = False
 		turtle.goto(0,0)
 		turtle.write("Game Over",align="center",font=("Arial", 50, "normal"))
 		print("YOU COLLIDED")
-		#turtle.bye()
 	getscreen().update()
 	time.sleep(sleep)
 mainloop()
