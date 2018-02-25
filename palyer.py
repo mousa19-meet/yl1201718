@@ -1,15 +1,11 @@
 import turtle
 from turtle import *
-from bullet import *
-#from zombie import *
+#from bullet import *
+from zombie import *
 
-screen_width =int(turtle.getcanvas().winfo_width()/2)
-screen_height = int(turtle.getcanvas().winfo_height()/2)
-#tracer(0)
-
-
+tracer(0)
+ht()
 screen = Screen()
-
 
 class player(Turtle):
 	def __init__(self,x,y):
@@ -19,7 +15,6 @@ class player(Turtle):
 		self.goto(x,y)
 		self.bullets = []
 
-
 	def shoot(self):
 		dem_bullets = []
 		for bullet in self.bullets:
@@ -27,7 +22,6 @@ class player(Turtle):
 			hit = False
 			if (not bullet.done() and not hit):
 				dem_bullets.append(bullet)
-
 		self.bullets = dem_bullets
 
 	def fire_bullet(self):
@@ -38,11 +32,6 @@ class player(Turtle):
 			self.left(7)
 		if x > self.xcor():
 			self.right(7)
-
-#def collision():
-	###
-
-
 player1 = player(0,0)
 
 def turnLeft():
@@ -51,14 +40,26 @@ def turnLeft():
 def turnRight():
 	player1.right(7)
 
-def pow():
-	player1.shoot()
-	player1.fire_bullet()
+#def collision():
+	###
+
+#def zombie_collison:
+	###
+
+#def pow():
+#	player1.shoot()
+#	player1.fire_bullet()
+#onkey(pow,"a")
 
 screen.onkey(turnLeft,"Left")
 screen.onkey(turnRight,"Right")
-onkey(pow,"a")
 listen()
 
 
+make_zombie()
+
+while True:
+	move_dem_zombies()
+	getscreen().update()
+	time.sleep(0.062)
 mainloop()

@@ -3,8 +3,10 @@ from turtle import *
 import random
 import time
 
-number_of_zombies = 6
+number_of_zombies = 10
 zombie_list = []
+screen_width =int(turtle.getcanvas().winfo_width()/2)
+screen_height = int(turtle.getcanvas().winfo_height()/2)
 
 class Zombie(Turtle):
 	def __init__(self,x,y,dx,dy,r,color):
@@ -20,46 +22,41 @@ class Zombie(Turtle):
 		self.color(color)
 		self.shape("circle")
 
-	def move(self,width,height):
+	def move(self):
+		global new_x , new_y
 		current_x = self.xcor()
-		new_x = current_x + self.dx 
 		current_y = self.ycor()
-		new_y = current_y + self.dy
-		right_side_ball = new_x + self.r
-		left_side_ball = new_x - self.r
-		top_side_ball = new_y + self.r
-		bottom_side_ball = new_y - self.r
+
+		if current_x > 0:
+			new_x = current_x - self.dx
+		if current_x < 0:
+			new_x = current_x + self.dx
+		if current_y > 0:
+			new_y = current_y - self.dy
+		if current_y < 0:
+			new_y = current_y + self.dx
+
 		self.goto(new_x,new_y)
-
-		if top_side_ball > height:
-			self.dy = -self.dy
-
-		elif bottom_side_ball < -height:
-			self.dy = -self.dy
-
-		elif left_side_ball < -width:
-			self.dx = -self.dx
-
-		elif right_side_ball > width:
-			self.dx = -self.dx 
-
 
 def make_zombie():
 	for i in range(int(number_of_zombies/2)):
-		radnom_X = random.randint(-50,50)
-		random_y_list =[100,-100]
+		radnom_X = random.randint(-350,350)
+		while radnom_X == 0:
+			radnom_X = random.randint(-350,350)
+		random_y_list =[250,-250]
 		random_y = random.choice(random_y_list)
-		fat_zombe = Zombie(radnom_X , random_y,5,5,10,"red")
+		fat_zombe = Zombie(radnom_X , random_y,2,2,10,"red")
 		zombie_list.append(fat_zombe)
-		radnom_X = random.randint(-50,50)
+		radnom_X = random.randint(-350,350)
+		while radnom_X == 0:
+			radnom_X = random.randint(-350,350)
 		random_y = random.choice(random_y_list)
-		fast_zombe = Zombie(radnom_X , random_y,15,15,10,"blue")
+		fast_zombe = Zombie(radnom_X,random_y,5,5,10,"blue")
 		zombie_list.append(fast_zombe)
 
 def move_dem_zombies():
 	for variable in range(len(zombie_list)):
-		zombie_list[variable].move(screen_width,screen_height)
-
+		zombie_list[variable].move()
 
 #make_zombie()
 #while True:
