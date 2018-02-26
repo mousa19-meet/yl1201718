@@ -6,8 +6,6 @@ import time
 
 number_of_zombies = 10
 zombie_list = []
-screen_width =int(turtle.getcanvas().winfo_width()/2)
-screen_height = int(turtle.getcanvas().winfo_height()/2)
 
 class Zombie(Turtle):
 	def __init__(self,x,y,dx,dy,r,color):

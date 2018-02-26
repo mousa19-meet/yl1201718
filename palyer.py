@@ -5,7 +5,7 @@ from zombie import *
 
 tracer(0)
 ht()
-screen = Screen()
+#screen = Screen()
 
 class player(Turtle):
 	def __init__(self,x,y):
@@ -16,6 +16,9 @@ class player(Turtle):
 		self.bullets = []
 
 	#def shoot(self):
+
+
+
 	#	dem_bullets = []
 	#	for bullet in self.bullets:
 	#		bullet.move()
@@ -33,26 +36,22 @@ class player(Turtle):
 	#		self.right(7)
 player1 = player(0,0)
 
-#def turnLeft():
-#	player1.left(7)
+def check_collide(zombie,bullet):
+	if zombie == bullet:
+		return False
+						#squareroot ( x2-x1 squared ) + ( y2-y1 squared)
+	distance = ((zombie.xcor()-bullet.xcor())**2 +(zombie.ycor()-bullet.ycor())**2)**0.5
 
-#def turnRight():
-#	player1.right(7)
+	if distance+5 <= (zombie.r+bullet.r):
+		return True 
+	else:
+		return False
 
-#def collision():
-	###
-
-#def zombie_collison:
-	###
-
-#def pow():
-#	player1.shoot()
-#	player1.fire_bullet()
-#onkey(pow,"a")
-
-#creen.onkey(turnLeft,"Left")
-#screen.onkey(turnRight,"Right")
-#listen()
+def check_all_collions:
+	for zombie in zombie_list:
+		for bullet in zombie_list:
+			if check_collide(zombie,bullet) == True:
+				zombie_list.pop(zombie)
 
 
 make_zombie()
