@@ -162,9 +162,11 @@ def check_player_collision():
 				healtht.ht()
 				healtht.goto(450,350)
 				healtht.clear()
-				healtht.write(str(player1.health), align="center", font=("Arial", 15, "normal"))
+				healtht.write("health : " + str(player1.health), align="center", font=("Arial", 15, "normal"))
 
 				if player.health == 0 :
+					turtle.clear()
+					turtle.write("GAME OVER",align="center",font = ("Arial", 150 , "normal"))
 					time.sleep(2)
 					bye()
 				print("ded")
