@@ -15,30 +15,29 @@ class player(Turtle):
 		self.goto(x,y)
 		self.bullets = []
 
-	def shoot(self):
-		dem_bullets = []
-		for bullet in self.bullets:
-			bullet.move()
-			hit = False
-			if (not bullet.done() and not hit):
-				dem_bullets.append(bullet)
-		self.bullets = dem_bullets
+	#def shoot(self):
+	#	dem_bullets = []
+	#	for bullet in self.bullets:
+	#		bullet.move()
+	#		hit = False
+	#		if (not bullet.done() and not hit):
+	#			dem_bullets.append(bullet)
+	#	self.bullets = dem_bullets
 
-	def fire_bullet(self):
-		self.bullets.append(Bullet(self.screen,self.xcor(),self.ycor(),self.heading()))
+	#def fire_bullet(self):
+	#	self.bullets.append(Bullet(self.screen,self.xcor(),self.ycor(),self.heading()))
 
-	def turnTowards(self,x,y):
-		if x < self.xcor():
-			self.left(7)
-		if x > self.xcor():
-			self.right(7)
+	##	if x < self.xcor():
+	#		self.left(7)
+	#	if x > self.xcor():
+	#		self.right(7)
 player1 = player(0,0)
 
-def turnLeft():
-	player1.left(7)
+#def turnLeft():
+#	player1.left(7)
 
-def turnRight():
-	player1.right(7)
+#def turnRight():
+#	player1.right(7)
 
 #def collision():
 	###
@@ -51,9 +50,9 @@ def turnRight():
 #	player1.fire_bullet()
 #onkey(pow,"a")
 
-screen.onkey(turnLeft,"Left")
-screen.onkey(turnRight,"Right")
-listen()
+#creen.onkey(turnLeft,"Left")
+#screen.onkey(turnRight,"Right")
+#listen()
 
 
 make_zombie()

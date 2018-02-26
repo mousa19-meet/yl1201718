@@ -3,6 +3,7 @@ from turtle import *
 import random
 import time
 
+
 number_of_zombies = 10
 zombie_list = []
 screen_width =int(turtle.getcanvas().winfo_width()/2)
@@ -51,7 +52,7 @@ def make_zombie():
 		while radnom_X == 0:
 			radnom_X = random.randint(-350,350)
 		random_y = random.choice(random_y_list)
-		fast_zombe = Zombie(radnom_X,random_y,5,5,10,"blue")
+		fast_zombe = Zombie(radnom_X,random_y,3,3,10,"blue")
 		zombie_list.append(fast_zombe)
 
 def move_dem_zombies():
